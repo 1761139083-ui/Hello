@@ -1,0 +1,544 @@
+/* ===== 基础变量与重置 ===== */
+:root {
+  --primary: #1a365d;
+  --primary-light: #2c5282;
+  --accent: #c9a227;
+  --accent-soft: rgba(201, 162, 39, 0.15);
+  --text: #2d3748;
+  --text-muted: #718096;
+  --border: #cbd5e0;
+  --border-light: #e2e8f0;
+  --bg: #f7fafc;
+  --card-bg: #ffffff;
+  --shadow: 0 4px 20px rgba(26, 54, 93, 0.08);
+  --shadow-hover: 0 8px 30px rgba(26, 54, 93, 0.12);
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 50%, #cbd5e0 100%);
+  min-height: 100vh;
+  color: var(--text);
+  line-height: 1.6;
+  padding: 40px 20px;
+}
+
+/* ===== 主容器 ===== */
+.resume-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  border: 2px solid var(--primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+/* ===== 头部 ===== */
+.resume-header {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: #fff;
+  text-align: center;
+  padding: 48px 32px;
+  position: relative;
+}
+
+.resume-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.resume-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  margin-bottom: 8px;
+}
+
+.resume-subtitle {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+/* ===== 通用区块 ===== */
+.resume-section {
+  margin: 28px 32px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.resume-section:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: var(--primary-light);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 24px;
+  background: linear-gradient(90deg, var(--accent-soft) 0%, transparent 100%);
+  border-bottom: 1.5px solid var(--border-light);
+}
+
+.section-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--primary);
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.section-header h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: 0.05em;
+}
+
+.section-content {
+  padding: 24px;
+}
+
+/* ===== 基本信息 ===== */
+.basic-info-layout {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+}
+
+.photo-frame {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-photo {
+  width: 140px;
+  height: 180px;
+  object-fit: cover;
+  object-position: center top;
+  border: 2px solid var(--primary);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  box-shadow: 0 4px 12px rgba(26, 54, 93, 0.12);
+  display: block;
+}
+
+.photo-caption {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.basic-info .info-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  min-width: 0;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  padding: 14px 18px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.info-item:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.info-label {
+  min-width: 80px;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  position: relative;
+  padding-right: 16px;
+}
+
+.info-label::after {
+  content: "：";
+}
+
+.info-value {
+  font-size: 0.95rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ===== 时间线（教育背景） ===== */
+.timeline {
+  position: relative;
+  padding-left: 28px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--primary), var(--accent));
+  border-radius: 1px;
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 28px;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -28px;
+  top: 6px;
+  width: 16px;
+  height: 16px;
+  background: var(--card-bg);
+  border: 3px solid var(--primary);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.timeline-item:first-child .timeline-marker {
+  background: var(--accent);
+  border-color: var(--primary);
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.timeline-header h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.timeline-date {
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 500;
+  background: var(--accent-soft);
+  padding: 2px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(201, 162, 39, 0.3);
+}
+
+.timeline-degree {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.timeline-details {
+  list-style: none;
+  padding: 12px 16px;
+  background: var(--bg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent);
+}
+
+.timeline-details li {
+  font-size: 0.875rem;
+  color: var(--text);
+  padding: 4px 0;
+  padding-left: 16px;
+  position: relative;
+}
+
+.timeline-details li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 0.75rem;
+}
+
+/* ===== 经历卡片 ===== */
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.experience-card {
+  padding: 20px 24px;
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-card:hover {
+  border-color: var(--primary-light);
+  box-shadow: 0 4px 12px rgba(26, 54, 93, 0.06);
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px dashed var(--border);
+}
+
+.experience-header h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.experience-company {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.experience-date {
+  font-size: 0.85rem;
+  color: #fff;
+  background: var(--primary-light);
+  padding: 4px 14px;
+  border-radius: 20px;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.experience-details {
+  list-style: none;
+}
+
+.experience-details li {
+  font-size: 0.875rem;
+  color: var(--text);
+  padding: 6px 0 6px 20px;
+  position: relative;
+  line-height: 1.7;
+}
+
+.experience-details li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+/* ===== 技能与自我评价 ===== */
+.skills-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.skills-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+}
+
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.skill-tag {
+  display: inline-block;
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--primary);
+  background: var(--accent-soft);
+  border: 1px solid rgba(201, 162, 39, 0.4);
+  border-radius: 20px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.skill-tag:hover {
+  background: rgba(201, 162, 39, 0.25);
+  transform: scale(1.05);
+}
+
+.skill-bar-item {
+  margin-bottom: 16px;
+}
+
+.skill-bar-item:last-child {
+  margin-bottom: 0;
+}
+
+.skill-bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.skill-bar-track {
+  height: 10px;
+  background: var(--border-light);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  border-radius: 10px;
+  transition: width 1s ease;
+}
+
+.evaluation-block {
+  padding: 20px;
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--bg) 0%, #fff 100%);
+}
+
+.evaluation-text {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.9;
+  text-align: justify;
+  text-indent: 2em;
+}
+
+/* ===== 页脚 ===== */
+.resume-footer {
+  text-align: center;
+  padding: 24px;
+  background: var(--bg);
+  border-top: 1.5px solid var(--border-light);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 768px) {
+  body {
+    padding: 16px 12px;
+  }
+
+  .resume-container {
+    border-width: 1.5px;
+  }
+
+  .resume-header {
+    padding: 32px 20px;
+  }
+
+  .resume-title {
+    font-size: 1.8rem;
+  }
+
+  .resume-section {
+    margin: 20px 16px;
+  }
+
+  .basic-info-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-photo {
+    width: 120px;
+    height: 160px;
+  }
+
+  .basic-info .info-grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .skills-section {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .experience-header {
+    flex-direction: column;
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+    padding: 0;
+  }
+
+  .resume-container {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+
+  .resume-section:hover {
+    box-shadow: none;
+  }
+}
